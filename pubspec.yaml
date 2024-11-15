@@ -48,6 +48,8 @@ dependencies:
   countup: ^0.1.4
   location: ^5.0.0
   animated_marker: ^0.1.4
+  blurrycontainer: ^2.1.0
+  google_fonts: ^6.2.1
 
 
 dev_dependencies:

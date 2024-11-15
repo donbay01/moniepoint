@@ -35,14 +35,14 @@ class HomeBody extends StatelessWidget {
           height: 20,
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElasticIn(
               delay: const Duration(milliseconds: 400),
               duration: const Duration(milliseconds: 2000),
               child: Container(
                 height: height * 0.25,
-                width: width * 0.4,
+                width: width * 0.43,
                 decoration: const BoxDecoration(
                   color: primaryOrange,
                   shape: BoxShape.circle,
@@ -71,7 +71,7 @@ class HomeBody extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 15),
+            const SizedBox(width: 20),
             ElasticIn(
               delay: const Duration(milliseconds: 400),
               duration: const Duration(milliseconds: 2000),

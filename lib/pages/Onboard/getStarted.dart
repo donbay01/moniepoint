@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:monie_homes/pages/dashboard/dashboard.dart';
 
 import '../../theme/colors.dart';
@@ -27,9 +28,15 @@ class Getstarted extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Welcome to Monie Homes',style: largeText(primaryBlack),),
-              SizedBox(height: 0,),
-              Text('Turning houses into homes.',style:mediumBold(primaryBlack),),
+              Text('Monie Homes',style: GoogleFonts.acme(
+                fontSize: 45,color: primaryBlack
+              ),),
+              Text('Turning houses into homes.',style: GoogleFonts.lugrasimo(
+                fontSize: 16,
+                color: textBrown,
+
+              ),
+              ),
               SizedBox(height: 80,),
               SizedBox(
                 height: height * 0.2,
@@ -55,17 +62,14 @@ class Getstarted extends StatelessWidget {
                     );
                   },
                   child: Text(
-                    'Begin',
-                    style: mediumBold(primaryBlack),
+                    'Get Started',
+                    style: smallBold(primaryWhite),
+                    textAlign: TextAlign.center,
                   ),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: backgroundOrange,
+                    backgroundColor: primaryBlack,
                     padding: const EdgeInsets.symmetric(
-                        vertical: 15, horizontal: 130),
-                    shape: BeveledRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      side: const BorderSide(color: primaryOrange, width: 1),
-                    ),
+                        vertical: 15, horizontal: 120),
                   ),
                 ),
               ),
