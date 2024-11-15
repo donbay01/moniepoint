@@ -27,7 +27,7 @@ class Getstarted extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Welcome to Monie Hommes',style: largeText(primaryBlack),),
+              Text('Welcome to Monie Homes',style: largeText(primaryBlack),),
               SizedBox(height: 0,),
               Text('Turning houses into homes.',style:mediumBold(primaryBlack),),
               SizedBox(height: 80,),

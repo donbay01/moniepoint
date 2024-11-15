@@ -36,7 +36,7 @@ class _MapScreenState extends State<MapScreen> {
 
       _sMarkers.add(
         Marker(
-          markerId: MarkerId('myLoaction'),
+          markerId: MarkerId('myLocation'),
           position: newLatLng,
           icon: BitmapDescriptor.defaultMarkerWithHue(
             BitmapDescriptor.hueOrange,
