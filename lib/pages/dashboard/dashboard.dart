@@ -1,132 +1,87 @@
+import 'package:animate_do/animate_do.dart';
+import 'package:crystal_navigation_bar/crystal_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:iconly/iconly.dart';
 import 'package:monie_homes/pages/home/home_page.dart';
-import 'package:monie_homes/pages/map/location.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
+import 'package:monie_homes/theme/colors.dart';
+import '../../components/map_icons.dart';
+import '../map/location.dart';
 
-import '../../theme/colors.dart';
-import '../nav_empty/index.dart';
+enum _SelectedTab { search, add, home, favorite, person }
 
-class Dashboard extends ConsumerStatefulWidget {
+class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
 
   @override
-  ConsumerState<Dashboard> createState() => _DashboardState();
+  State<Dashboard> createState() => _DashboardState();
 }
 
-class _DashboardState extends ConsumerState<Dashboard> {
+class _DashboardState extends State<Dashboard> {
+  var _selectedTab = _SelectedTab.home;
+
+  void _handleIndexChanged(int i) {
+    setState(() {
+      _selectedTab = _SelectedTab.values[i];
+    });
+  }
+
+  getPage() {
+    if (_selectedTab == _SelectedTab.home) {
+      return const HomePage();
+    }
+
+    return const MapScreen();
+  }
+
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: primaryBlack,
+      extendBody: true,
+      floatingActionButton:
+      _selectedTab == _SelectedTab.home ? null : const MapIcons(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      body: getPage(),
+      bottomNavigationBar: SlideInUp(
+        from: 500,
+        delay: const Duration(milliseconds: 900),
+        duration: const Duration(milliseconds: 1000),
+        child: CrystalNavigationBar(
+          height: 80,
+          currentIndex: _SelectedTab.values.indexOf(_selectedTab),
+          indicatorColor: primaryOrange,
+          unselectedItemColor: primaryWhite,
+          selectedItemColor: primaryOrange,
+          backgroundColor: navBlack,
+          // outlineBorderColor: Colors.black.withOpacity(0.1),
+          onTap: _handleIndexChanged,
+          items: [
+            CrystalNavigationBarItem(
+              icon: IconlyBold.search,
+            ),
 
-    return Stack(
-      children: [
-        PersistentTabView(
-          navBarHeight: 65,
-          backgroundColor: primaryBlack,
-          // hideNavigationBar: !showNav,
-          tabs: [
-            PersistentTabConfig(
-              screen: Location(),
-              item: ItemConfig(
-                icon: CircleAvatar(
-                  backgroundColor: navBlack,
-                  radius: 25,
-                  child:  Icon(
-                    FontAwesomeIcons.searchLocation,
-                    size: 20,
-                    color: primaryWhite,
-                  ),
-                ),
-                activeForegroundColor: primaryOrange,
-              ),
+            CrystalNavigationBarItem(
+              icon: IconlyBold.chat,
+
             ),
-            PersistentTabConfig(
-              screen: NavEmpty(),
-              item: ItemConfig(
-                icon: CircleAvatar(
-                  backgroundColor: navBlack,
-                  radius: 25,
-                  child:  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(
-                      FontAwesomeIcons.solidMessage,
-                      size: 20,
-                      color: primaryWhite,
-                    ),
-                  ),
-                ),
-                activeForegroundColor: primaryOrange,
-              ),
+
+            CrystalNavigationBarItem(
+              icon: IconlyBold.home,
             ),
-            PersistentTabConfig(
-              screen: HomePage(),
-              item: ItemConfig(
-                icon: CircleAvatar(
-                  backgroundColor: navBlack,
-                  radius: 25,
-                  child:  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(
-                      FontAwesomeIcons.home,
-                      size: 20,
-                      color: primaryWhite,
-                    ),
-                  ),
-                ),
-                activeForegroundColor: primaryOrange,
-              ),
+
+            CrystalNavigationBarItem(
+              icon: IconlyBold.heart,
+              selectedColor: Colors.red,
             ),
-            PersistentTabConfig(
-              screen: const NavEmpty(),
-              item: ItemConfig(
-                icon: CircleAvatar(
-                  backgroundColor: navBlack,
-                  radius: 25,
-                  child:  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(
-                      FontAwesomeIcons.solidHeart,
-                      size: 20,
-                      color: primaryWhite,
-                    ),
-                  ),
-                ),
-                activeForegroundColor: primaryOrange,
-              ),
-            ),
-            PersistentTabConfig(
-              screen: NavEmpty(),
-              item: ItemConfig(
-                icon: CircleAvatar(
-                  backgroundColor: navBlack,
-                  radius: 25,
-                  child:  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(
-                      FontAwesomeIcons.solidUser,
-                      size: 20,
-                      color: primaryWhite,
-                    ),
-                  ),
-                ),
-                activeForegroundColor: primaryOrange,
-              ),
+
+            /// Profile
+            CrystalNavigationBarItem(
+              icon: FontAwesomeIcons.solidUser,
             ),
           ],
-          margin: EdgeInsets.symmetric(vertical: 10,horizontal: 30),
-          avoidBottomPadding: true,
-          resizeToAvoidBottomInset: false,
-          navBarBuilder: (navBarConfig) => Style10BottomNavBar(
-            navBarConfig: navBarConfig,
-            navBarDecoration: const NavBarDecoration(
-                color: primaryBlack,
-              borderRadius: BorderRadius.all(Radius.circular(100))
-
-            ),
-          ),
         ),
-      ],
+      ),
     );
   }
 }

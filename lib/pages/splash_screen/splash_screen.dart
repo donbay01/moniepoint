@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:monie_homes/pages/Onboard/getStarted.dart';
 import 'package:monie_homes/pages/dashboard/dashboard.dart';
 import 'package:monie_homes/pages/home/home_page.dart';
 
@@ -49,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Route _createRoute() {
     return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) =>  Dashboard(),
+      pageBuilder: (context, animation, secondaryAnimation) =>  Getstarted(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = const Offset(0.0, 1.0);
         var end = Offset.zero;
