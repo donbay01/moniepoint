@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:monie_homes/pages/dashboard/dashboard.dart';
+import 'package:provider/provider.dart';
 
 import '../../components/loader.dart';
 import '../../models/user.dart';
@@ -77,6 +78,7 @@ class _GetstartedState extends State<Getstarted> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  SizedBox(height: 30,),
                   Text(
                     'Monie Homes',
                     style: GoogleFonts.acme(fontSize: 45, color: primaryBlack),
@@ -176,20 +178,19 @@ class _GetstartedState extends State<Getstarted> {
                     ),
                   ),
                   SizedBox(
-                    height: 100,
-                  ),
-                  SizedBox(
-                    height: 20,
+                    height: 70,
                   ),
                   SlideInUp(
                     from: 100,
                     delay: const Duration(milliseconds: 300),
                     child: ElevatedButton(
                       onPressed: () {
+                        Provider.of<UserData>(context, listen: false)
+                            .setUserName(nameController.text);
                         final name = nameController.text;
                         final city = cityController.text;
-
                         createUser(name: name, city: city);
+
                       },
                       child: Text(
                         'Get Started',

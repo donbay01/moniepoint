@@ -1,7 +1,9 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:countup/countup.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../models/user.dart';
 import '../theme/colors.dart';
 import '../theme/text_style.dart';
 
@@ -12,6 +14,8 @@ class HomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
+
+    String nickName = Provider.of<UserData>(context).nickName;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -19,7 +23,7 @@ class HomeBody extends StatelessWidget {
           from: 50,
           delay: const Duration(milliseconds: 100),
           child: Text(
-            'Hi, Isaac',
+            'Hi, $nickName',
             style: mediumSemiBold(textBrown),
           ),
         ),

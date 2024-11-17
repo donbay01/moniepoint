@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 class User {
   String id;
   final String name;
@@ -13,4 +15,15 @@ class User {
     'name': name,
     'city': city
   };
+}
+
+class UserData with ChangeNotifier {
+  String _nickName = '';
+
+  String get nickName => _nickName;
+
+  void setUserName(String name) {
+    _nickName = name;
+    notifyListeners(); // Notify listeners when the name is updated
+  }
 }
