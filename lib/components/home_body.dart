@@ -19,7 +19,7 @@ class HomeBody extends StatelessWidget {
           from: 50,
           delay: const Duration(milliseconds: 100),
           child: Text(
-            'Hi, Marina',
+            'Hi, Isaac',
             style: mediumSemiBold(textBrown),
           ),
         ),

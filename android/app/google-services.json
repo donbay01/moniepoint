@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "316745059140",
+    "project_id": "moniehomes-a8d6e",
+    "storage_bucket": "moniehomes-a8d6e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:316745059140:android:e43ea2f20485bfe84be511",
+        "android_client_info": {
+          "package_name": "com.example.monie_homes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKbMVMxjuBgQ7fEMeYkzVfhxONmQSIIIo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

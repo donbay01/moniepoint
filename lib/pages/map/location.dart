@@ -89,23 +89,29 @@ class _MapScreenState extends State<MapScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      top: false,
-      bottom: false,
-      child: AnimatedMarker(
-        staticMarkers: _sMarkers,
-        animatedMarkers: _aMarkers,
-        duration: const Duration(seconds: 3),
-        fps: 30,
-        curve: Curves.easeOut,
-        builder: (context, animatedMarkers) => GoogleMap(
-          myLocationEnabled: true,
-          myLocationButtonEnabled: false,
-          markers: animatedMarkers,
-          onMapCreated: _onMapCreated,
-          initialCameraPosition: CameraPosition(
-            target: LatLng(37.7749, -122.4194),
-            zoom: 12,
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
+
+
+    return Scaffold(
+      body: SafeArea(
+        top: false,
+        bottom: false,
+        child: AnimatedMarker(
+          staticMarkers: _sMarkers,
+          animatedMarkers: _aMarkers,
+          duration: const Duration(seconds: 3),
+          fps: 30,
+          curve: Curves.easeOut,
+          builder: (context, animatedMarkers) => GoogleMap(
+            myLocationEnabled: true,
+            myLocationButtonEnabled: false,
+            markers: animatedMarkers,
+            onMapCreated: _onMapCreated,
+            initialCameraPosition: CameraPosition(
+              target: LatLng(37.7749, -122.4194),
+              zoom: 12,
+            ),
           ),
         ),
       ),
